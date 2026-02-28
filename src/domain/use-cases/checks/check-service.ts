@@ -13,6 +13,7 @@ export class CheckService implements CheckServiceUseCase {
     private readonly logRepository: LogRepository,
     private readonly successCallback: SuccessCallback,
     private readonly errorCallback: ErrorCallback,
+    private origin: string = 'check-service.ts',
   ) {}
 
   public async execute(url: string): Promise<boolean> {
@@ -22,14 +23,22 @@ export class CheckService implements CheckServiceUseCase {
         throw new Error(`Error on check service ${url}`)
       }
 
-      const log = new LogEntity(`${url} is working`, LogSeverityLevel.low)
+      const log = new LogEntity({
+        level: LogSeverityLevel.low,
+        message: `${url} is working`,
+        origin: this.origin,
+      })
       this.logRepository.saveLog(log)
 
       this.successCallback()
       return true
     } catch (error) {
       const errorMessage = `${url} is not working ${error}`
-      const log = new LogEntity(errorMessage, LogSeverityLevel.high)
+      const log = new LogEntity({
+        level: LogSeverityLevel.high,
+        message: errorMessage,
+        origin: this.origin,
+      })
 
       this.errorCallback(errorMessage)
       return false
