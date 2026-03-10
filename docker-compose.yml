@@ -12,3 +12,16 @@ services:
       - ./mongo_data:/data/db
     ports:
       - '27017:27017'
+
+  postgres-db:
+    image: postgres:15.17
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'

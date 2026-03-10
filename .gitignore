@@ -3,4 +3,5 @@ dist/
 logs/
 .env
 mongo_data/
+postgres_data/
 .vscode/
