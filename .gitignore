@@ -4,4 +4,7 @@ logs/
 .env
 mongo_data/
 postgres_data/
+generated/
 .vscode/
+
+/generated/prisma

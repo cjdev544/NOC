@@ -10,5 +10,6 @@ async function main() {
     dbName: envs.MONGO_DB_NAME,
     mongoUrl: envs.MONGO_URL,
   })
-  // Server.start()
+
+  Server.start()
 }
