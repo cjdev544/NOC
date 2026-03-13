@@ -18,7 +18,7 @@ const severityEnum = {
   high: SeverityLevel.HIGH,
 }
 
-export class PostgresLogDatasource implements LogDatasource {
+export class PostgresLogDatasource extends LogDatasource {
   async saveLog(log: LogEntity): Promise<void> {
     try {
       const newLog = await prisma.logModel.create({

@@ -2,7 +2,7 @@ import { LogModel } from '../../data/mongo'
 import { LogDatasource } from '../../domain/datasources/log.datasource'
 import { LogEntity, LogSeverityLevel } from '../../domain/entities/log.entity'
 
-export class MongoLogDatasource implements LogDatasource {
+export class MongoLogDatasource extends LogDatasource {
   async saveLog(log: LogEntity): Promise<void> {
     try {
       const newLog = await LogModel.create(log)
