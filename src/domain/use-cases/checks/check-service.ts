@@ -39,8 +39,9 @@ export class CheckService implements CheckServiceUseCase {
         message: errorMessage,
         origin: this.origin,
       })
+      this.logRepository.saveLog(log)
 
-      this.errorCallback(errorMessage)
+      this.errorCallback && this.errorCallback(errorMessage)
       return false
     }
   }

@@ -27,7 +27,6 @@ export class FileSystemDatasource extends LogDatasource {
 
     ;[this.allLogsPath, this.mediumLogsPath, this.highLogsPath].forEach(
       (path) => {
-        if (!existsSync(path)) return
         writeFileSync(path, '')
       },
     )
